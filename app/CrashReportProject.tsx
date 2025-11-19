@@ -5,7 +5,6 @@ import {
   ChevronRight,
   AlertCircle,
   User,
-  Car,
   MapPin,
   Calendar,
   Clock,
@@ -1084,7 +1083,8 @@ const CrashReportDesign = () => {
                   <span>
                     <strong>State Management:</strong> React useState hook
                     manages slide navigation and form interactions with
-                    client-side rendering enabled via "use client" directive.
+                    client-side rendering enabled via &quot;use client&quot;
+                    directive.
                   </span>
                 </li>
               </ul>

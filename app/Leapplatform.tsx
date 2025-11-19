@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, useMemo } from "react";
+import type { LucideProps } from "lucide-react";
 import {
   Search,
   BookOpen,
   User,
-  Home,
   FileText,
   BarChart3,
   Plus,
-  Filter,
   ChevronRight,
   Star,
   Users,
@@ -189,7 +188,6 @@ const LEAPPlatform = () => {
     null
   );
   const [showAssignmentModal, setShowAssignmentModal] = useState(false);
-  const [collections, setCollections] = useState<Resource[]>([]);
 
   const grades = [
     "all",
@@ -279,7 +277,7 @@ const LEAPPlatform = () => {
   const Navigation = () => {
     const navItems: Record<
       Role,
-      { id: string; label: string; icon: React.ComponentType<any> }[]
+      { id: string; label: string; icon: React.ComponentType<LucideProps> }[]
     > = {
       teacher: [
         { id: "browse", label: "Browse", icon: Search },
@@ -656,116 +654,31 @@ const LEAPPlatform = () => {
       <h2 className="text-2xl font-bold text-gray-900">Connect with Mentors</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {mockMentors.map(
-          (mentor: {
-            id: React.Key | null | undefined;
-            name:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-            role:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-            experience:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-          }) => (
-            <div
-              key={mentor.id}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-5"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full p-4 text-white">
-                  <User size={32} />
+        {mockMentors.map((mentor: Mentor) => (
+          <div
+            key={mentor.id}
+            className="bg-white rounded-lg shadow-sm border border-gray-200 p-5"
+          >
+            <div className="flex items-start space-x-4">
+              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full p-4 text-white">
+                <User size={32} />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  {mentor.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-2">{mentor.role}</p>
+                <div className="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                  <Award size={16} />
+                  <span>{mentor.experience} experience</span>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    {mentor.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2">{mentor.role}</p>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                    <Award size={16} />
-                    <span>{mentor.experience} experience</span>
-                  </div>
-                  <button className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
-                    Request Mentorship
-                  </button>
-                </div>
+                <button className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
+                  Request Mentorship
+                </button>
               </div>
             </div>
-          )
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -778,112 +691,27 @@ const LEAPPlatform = () => {
       </h2>
 
       <div className="space-y-4">
-        {mockInternships.map(
-          (internship: {
-            id: React.Key | null | undefined;
-            title:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-            location:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-            duration:
-              | string
-              | number
-              | bigint
-              | boolean
-              | React.ReactElement<
-                  unknown,
-                  string | React.JSXElementConstructor<any>
-                >
-              | Iterable<React.ReactNode>
-              | React.ReactPortal
-              | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | React.ReactPortal
-                  | React.ReactElement<
-                      unknown,
-                      string | React.JSXElementConstructor<any>
-                    >
-                  | Iterable<React.ReactNode>
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-          }) => (
-            <div
-              key={internship.id}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-5"
-            >
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    {internship.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">{internship.location}</p>
-                </div>
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
-                  {internship.duration}
-                </span>
+        {mockInternships.map((internship: Internship) => (
+          <div
+            key={internship.id}
+            className="bg-white rounded-lg shadow-sm border border-gray-200 p-5"
+          >
+            <div className="flex justify-between items-start mb-3">
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  {internship.title}
+                </h3>
+                <p className="text-sm text-gray-600">{internship.location}</p>
               </div>
-              <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
-                Apply Now
-              </button>
+              <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
+                {internship.duration}
+              </span>
             </div>
-          )
-        )}
+            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
+              Apply Now
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
