@@ -3,7 +3,8 @@ import ScholarshipWireframe, {
   AuburnHomepageWireframe,
 } from "./ScholarshipWireFrame";
 import CrashReportProject from "./CrashReportProject";
+import LEAPPlatform from "./Leapplatform";
 
 export default function Page() {
-  return <CrashReportProject />;
+  return <LEAPPlatform />;
 }
